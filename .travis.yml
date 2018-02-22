@@ -75,7 +75,11 @@ install:
         docker exec test apt-get --force-yes -y install jubatus;
       fi;
     fi
-  - docker exec test /usr/bin/scl enable python27 -- pip install jubatus cython
+  - if [ "DIST" == "centos" -a $VERSION -eq 6]; then
+      docker exec test /usr/bin/scl enable python27 -- pip install jubatus cython;
+    else
+      docker exec test pip install jubatus cython;
+    fi;
   - if [ "$TRAVIS_BRANCH" != "master" ]; then
       if [ "$DIST" == "centos" ]; then
         docker exec test yum -y install git bzip2 msgpack-devel-0.5.9;
@@ -101,7 +105,11 @@ script:
       docker exec -t test bash -ic "source /opt/jubatus/profile; python ./setup.py build_ext -i && python ./setup.py test";
     fi
   - if [ "$DIST" == "centos" ]; then
-       docker exec test pip install numpy scipy;
+      if [ $VERSION -eq 6 ]; then
+        docker exec -t test /usr/bin/scl enable python27 -- pip install numpy scipy;
+      else
+        docker exec -t test pip install numpy scipy;
+      fi;
     elif [ "$DIST" == "ubuntu" ]; then
       docker exec test apt-get --force-yes -y install python-numpy python-scipy;
     fi
