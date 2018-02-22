@@ -64,13 +64,8 @@ install:
     fi
   - if [ "$DIST" == "ubuntu" ]; then
       docker exec test apt-get -y update;
-      docker exec test apt-get --force-yes -y install python-dev g++;
-      if [ "$VERSION" == "12.04" ]; then
-        docker exec test apt-get --force-yes -y install curl;
-        docker exec test curl -kL https://bootstrap.pypa.io/get-pip.py | python;
-      else
-        docker exec test apt-get install python-pip;
-      fi;
+      docker exec test apt-get --force-yes -y install python-dev python-pip g++;
+      docker exec test pip install --upgrade pip;
       if [ "$TRAVIS_BRANCH" == "master" ]; then
         docker exec test apt-get --force-yes -y install jubatus;
       fi;
