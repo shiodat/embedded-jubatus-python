@@ -64,7 +64,14 @@ install:
     fi
   - if [ "$DIST" == "ubuntu" ]; then
       docker exec test apt-get -y update;
-      docker exec test apt-get --force-yes -y install python-dev python-pip g++;
+      docker exec test apt-get --force-yes -y install python-dev g++;
+      if [ "$VERSION" == "12.04" ]; then
+        docker exec test apt-get --force-yes -y install --reinstall python2.7 wget;
+        docker exec test wget https://bootstrap.pypa.io/get-pip.py;
+        docker exec test python get-pip.py;
+      else
+        docker exec test apt-get --force-yes -y install python-pip;
+      fi;
       docker exec test pip install --upgrade pip;
       if [ "$TRAVIS_BRANCH" == "master" ]; then
         docker exec test apt-get --force-yes -y install jubatus;
