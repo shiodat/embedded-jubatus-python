@@ -45,9 +45,8 @@ before_install:
 install:
   - if [ "$DIST" == "centos" ]; then
       if [ $VERSION -eq 6 ]; then
-        docker exec test yum -y install centos-release-scl-rh;
-        docker exec test yum -y install python27;
-        docker exec test scl enable python27 bash;
+        docker exec test yum --enablerepo=centos-sclo-rh -y install python27;
+        docker exec test /usr/bin/scl enable python27 bash;
       fi;
       docker exec test yum -y install gcc-c++ python-devel epel-release;
       if [ "$TRAVIS_BRANCH" == "master" ]; then
