@@ -14,18 +14,18 @@ embedded-jubatus-python is a Python bridge to call `Jubatus Core <https://github
 The interface of embedded-jubatus-python is the same as that of RPC client classes.
 See the `API Reference <http://jubat.us/en/api/>`_ for details.
 
-Install
+iInstall
 -------
 
-::
+:i:
 
   pip install Cython
   pip install embedded_jubatus
 
-Requirements
+Reiquirements
 ------------
 
-* Python 2.6, 2.7, 3.3, 3.4 or 3.5.
+* Python 2.7, 3.3, 3.4 or 3.5.
 * `Jubatus <http://jubat.us/en/quickstart.html>`_ needs to be installed.
 
 Limitations
