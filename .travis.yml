@@ -98,7 +98,7 @@ script:
       docker exec -t test bash -ic "source /opt/jubatus/profile; python ./setup.py build_ext -i && python ./setup.py test";
     fi
   - if [ "$DIST" == "centos" ]; then
-      docker exec test yum -y install numpy scipy;
+       docker exec test pip install numpy scipy;
     elif [ "$DIST" == "ubuntu" ]; then
       docker exec test apt-get --force-yes -y install python-numpy python-scipy;
     fi
