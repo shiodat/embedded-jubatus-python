@@ -116,7 +116,7 @@ script:
   - docker exec test rm -rf build
   - if [ "$DIST" == "centos" ]; then
       if [ $VERSION -eq 6 ]; then
-        docker exec -t test /usr/bin/scl enable python27 --bash -ic "python ./setup.py build_ext -i && python ./setup.py test";
+        docker exec -t test /usr/bin/scl enable python27 -- bash -ic "python ./setup.py build_ext -i && python ./setup.py test";
       else
         docker exec -t test bash -ic "python ./setup.py build_ext -i && python ./setup.py test";
       fi;
