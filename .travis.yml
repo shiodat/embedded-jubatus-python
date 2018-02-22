@@ -16,6 +16,9 @@ matrix:
       - VERSION=7
     - env:
       - DIST=ubuntu
+      - VERSION=12.04
+    - env:
+      - DIST=ubuntu
       - VERSION=14.04
     - env:
       - DIST=ubuntu
