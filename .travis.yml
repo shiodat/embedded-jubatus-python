@@ -51,7 +51,7 @@ install:
         docker exec test yum -y install centos-release-scl-rh curl;
         docker exec test yum -y install python27;
         docker exec test /usr/bin/scl enable python27 true;
-        docker exec test ln -s /usr/bin/python2.7 /usr/bin/python
+        docker exec test ln -s /usr/bin/python2.7 /usr/bin/python;
       fi;
       docker exec test yum -y install gcc-c++ python-devel epel-release;
       if [ "$TRAVIS_BRANCH" == "master" ]; then
