@@ -75,7 +75,7 @@ install:
         docker exec test apt-get --force-yes -y install jubatus;
       fi;
     fi
-  - docker exec test pip install jubatus cython
+  - docker exec test /usr/bin/scl enable python27 -- pip install jubatus cython
   - if [ "$TRAVIS_BRANCH" != "master" ]; then
       if [ "$DIST" == "centos" ]; then
         docker exec test yum -y install git bzip2 msgpack-devel-0.5.9;
