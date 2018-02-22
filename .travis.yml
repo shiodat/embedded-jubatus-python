@@ -75,7 +75,7 @@ install:
         docker exec test apt-get --force-yes -y install jubatus;
       fi;
     fi
-  - if [ "DIST" == "centos" ] && [ $VERSION -eq 6 ]; then
+  - if [ "$DIST" == "centos" ] && [ $VERSION -eq 6 ]; then
       docker exec test /usr/bin/scl enable python27 -- pip install jubatus cython;
     else
       docker exec test pip install jubatus cython;
